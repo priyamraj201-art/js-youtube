@@ -3,11 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>DOM</title>
+    <style>
+        .bg-black {
+            background-color: black;
+            color: white;
+        } 
+    </style>
 </head>
-<body>
-    <div class="bg-black">
-        <h1 id="title" class="heading">learning DOM from yt vchai or code</h1> 
-        <p>Lorem ipsum dolor sit amet, consectetu</p>
+<body  class="bg-black">
+    <div>
+        <div class="class">monday</div>
+        <div class="class">tuesday</div>
+        <div class="class">wednesday</div>
+        <div class="class">thursday</div>
     </div>
 </body>
+<script>
+    const div = document.createElement('div');
+    
+    div.textContent = 'friday'; // not useful 
+    div.style.backgroundColor = 'red';
+    div.setAttribute('class', 'friday');
+    const addText = document.createTextNode('hello world'); // more used because it can be used in more placesof less complexity
+    div.appendChild(addText);
+    document.body.appendChild(div);
+
+ 
+
+</script>
 </html>

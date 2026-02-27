@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 2</title>
+
+</head>
+<body>
+    <ul class="language">
+        <li>jabaSkreept</li>
+        </ul>
+<!--  
+    <div class="cool"></div>
+    <div class="cool"></div>
+    <div class="cool"></div>
+    <div class="cool"></div> -->
+</body>
+
+<script>
+    function addlanguage(addLan){
+       const li = document.createElement('li');
+      // li.textContent = addLan;
+       li.innerHTML= `${addLan}`;
+         document.querySelector('.language').appendChild(li);  
+         if (addLan=='python') {
+            li.style.color='blue';
+         } else if (addLan=='java') {
+            li.style.color='red';
+         } else if (addLan=='c++') {
+            li.style.color='green'; 
+         } 
+            }
+    addlanguage('python');
+    addlanguage('java');
+    addlanguage('c++');
+
+    function addOptiLanguage(addLan){
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(addLan));
+        document.querySelector('.language').appendChild(li);  
+    }
+    addOptiLanguage('Golang');
+
+    //EDIT
+
+    const secondlang = document.querySelector('.language li:nth-child(2)');
+    // secondlang.textContent = 'JavaScript';
+    const newLi = document.createElement('li');
+    newLi.textContent = 'Ruby';
+
+    secondlang.replaceWith(newLi);
+
+</script>
+</html>
