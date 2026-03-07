@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>padh le lawde</title>
+    
+</head>
+<body>
+    <h1>bhoot ka bhukha</h1>
+    <button id="stop">STOP</button>
+    <button id="start">START</button>
+</body>
+<script>
+    let intervalId; // to store the interval ID
+
+    document.querySelector('#start').addEventListener('click', function() {
+        console.log("START button clicked!");
+        if (!intervalId){ 
+            intervalId = setInterval(()=>{document.querySelector('h1').textContent = Date.now(),
+                document.querySelector('h1').style.color = "black";
+            }, 1000);
+        }
+       
+    });
+
+    document.querySelector('#stop').addEventListener('click', function() {
+        console.log("STOP button clicked!");
+        clearInterval(intervalId);
+        intervalId = null; // reset the interval ID
+        document.querySelector('h1').textContent = "PADH LE LAWDE";
+        setTimeout(() => {
+            document.querySelector('h1').style.color = "red";
+        }, 2000);
+    });
+</script>
+</html>

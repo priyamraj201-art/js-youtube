@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: grey;">
+    <h1>Priyam with chai aur code</h1>
+    <button id="stop">STOP</button>
+
+    </body>
+<script>
+    const priyam = function() {
+        document.querySelector('h1').innerText = "Priyam is coding with chai aur code"
+        document.querySelector('h1').style.color = "blue";
+        console.log("Priyam is coding!")
+    }
+    setTimeout(priyam, 2000);
+
+    document.querySelector('#stop').addEventListener('click', function() {
+        clearTimeout(priyam); // to stop the timeout function
+        console.log("Timeout stopped!");
+    });
+
+
+</script>
+</html>
