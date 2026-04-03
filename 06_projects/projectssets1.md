@@ -1,7 +1,7 @@
 # PROJECT RELATED TO DOM 
 ## PROJECT LINK
 
-[click here]([text](https://stackblitz.com/edit/dom-project-chaiaurcode?file=6-unlimitedColors%2Findex.html))
+[click here]((https://stackblitz.com/edit/dom-project-chaiaurcode?file=6-unlimitedColors%2Findex.html))
 
 # solution code
 ## project 1

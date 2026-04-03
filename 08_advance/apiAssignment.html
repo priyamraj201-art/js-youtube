@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Profile Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #212121;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #f6b800; /* Chai aur Code theme color */
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #dca300;
+        }
+
+        /* Styling for the card that will be generated */
+        .card {
+            background-color: #333333;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: none; /* Hidden until data is fetched */
+        }
+
+        .card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #f6b800;
+            margin-bottom: 15px;
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .card p {
+            font-size: 16px;
+            color: #b3b3b3;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="fetchBtn">Get GitHub Profile</button>
+
+    <div class="card" id="profileCard">
+        <img id="avatar" src="" alt="Profile Picture">
+        <h2 id="name"></h2>
+        <p>Followers: <strong id="followers"></strong></p>
+    </div>
+
+    <script>
+        const fetchBtn = document.getElementById('fetchBtn');
+        const profileCard = document.getElementById('profileCard');
+        const avatarImg = document.getElementById('avatar');
+        const nameText = document.getElementById('name');
+        const followersText = document.getElementById('followers');
+
+        const requestUrl = 'https://api.github.com/users/priyamraj201-art'; 
+
+        fetchBtn.addEventListener('click', () => {
+            // 1. Create the XMLHttpRequest object
+            const xhr = new XMLHttpRequest();
+            
+            // 2. Configure the request
+            xhr.open('GET', requestUrl);
+            
+            // 3. Track the state changes
+            xhr.onreadystatechange = function() {
+                // state 4 means the operation is fully complete
+                if (xhr.readyState === 4) {
+                    
+                    // Convert the returned string into a JSON Object
+                    const data = JSON.parse(this.responseText);
+                    
+                    // Extract the required data and inject it into the DOM
+                    avatarImg.src = data.avatar_url;
+                    nameText.textContent = data.name || data.login; // Fallback to login if name is empty
+                    followersText.textContent = data.followers;
+                    
+                    // Make the card visible
+                    profileCard.style.display = 'block';
+                }
+            }
+            
+            // 4. Send the request
+            xhr.send();
+        });
+    </script>
+</body>
+</html>
